@@ -25,6 +25,6 @@ class Settings(BaseSettings):
     chunk_overlap: int = 200
     
     # Retrieval
-    retriever_top_k: int = 4
+    retriever_top_k: int = 6
     
 settings = Settings()
