@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     groq_api_key: str
     
     # Embedding Model
-    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    embedding_model: str = "BAAI/bge-small-en-v1.5"
     
     # LLM Configuration
     llm_model: str = "llama-3.3-70b-versatile"

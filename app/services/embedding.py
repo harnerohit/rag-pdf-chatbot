@@ -10,12 +10,12 @@ print("[startup] app.services.embedding: after settings import", flush=True)
 @lru_cache
 def get_embedding_function():
     """
-    Returns a cached instance of the HuggingFaceEmbeddings class.
+    Returns a cached instance of the FastEmbedEmbeddings class.
     This function uses LRU caching to avoid re-initializing the embeddings model multiple times.
     """
-    print("[startup] app.services.embedding: before HuggingFaceEmbeddings import", flush=True)
-    from langchain_huggingface import HuggingFaceEmbeddings
-    print("[startup] app.services.embedding: after HuggingFaceEmbeddings import", flush=True)
-    return HuggingFaceEmbeddings(
+    print("[startup] app.services.embedding: before FastEmbedEmbeddings import", flush=True)
+    from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
+    print("[startup] app.services.embedding: after FastEmbedEmbeddings import", flush=True)
+    return FastEmbedEmbeddings(
         model_name=settings.embedding_model,
     )
