@@ -11,18 +11,6 @@ print("[startup] app.services.rag_chain: before lru_cache import", flush=True)
 from functools import lru_cache
 print("[startup] app.services.rag_chain: after lru_cache import", flush=True)
 
-print("[startup] app.services.rag_chain: before ChatGroq import", flush=True)
-from langchain_groq import ChatGroq
-print("[startup] app.services.rag_chain: after ChatGroq import", flush=True)
-
-print("[startup] app.services.rag_chain: before StrOutputParser import", flush=True)
-from langchain_core.output_parsers import StrOutputParser
-print("[startup] app.services.rag_chain: after StrOutputParser import", flush=True)
-
-print("[startup] app.services.rag_chain: before ChatPromptTemplate import", flush=True)
-from langchain_core.prompts import ChatPromptTemplate
-print("[startup] app.services.rag_chain: after ChatPromptTemplate import", flush=True)
-
 print("[startup] app.services.rag_chain: before settings import", flush=True)
 from app.core.config import settings
 print("[startup] app.services.rag_chain: after settings import", flush=True)
@@ -43,9 +31,14 @@ print("[startup] app.services.rag_chain: before logger creation", flush=True)
 logger = get_logger(__name__)
 print("[startup] app.services.rag_chain: after logger creation", flush=True)
 
-print("[startup] app.services.rag_chain: before prompt creation", flush=True)
-PROMPT = ChatPromptTemplate.from_template(
-    """
+@lru_cache
+def get_prompt():
+    print("[startup] app.services.rag_chain: before ChatPromptTemplate import", flush=True)
+    from langchain_core.prompts import ChatPromptTemplate
+    print("[startup] app.services.rag_chain: after ChatPromptTemplate import", flush=True)
+    print("[startup] app.services.rag_chain: before prompt creation", flush=True)
+    prompt = ChatPromptTemplate.from_template(
+        """
 You are an intelligent document assistant.
 
 Use ONLY the provided context.
@@ -70,12 +63,16 @@ Question:
 
 Answer:
 """
-)
-print("[startup] app.services.rag_chain: after prompt creation", flush=True)
+    )
+    print("[startup] app.services.rag_chain: after prompt creation", flush=True)
+    return prompt
 
 
 @lru_cache
 def get_llm():
+    print("[startup] app.services.rag_chain: before ChatGroq import", flush=True)
+    from langchain_groq import ChatGroq
+    print("[startup] app.services.rag_chain: after ChatGroq import", flush=True)
     return ChatGroq(
         model=settings.llm_model,
         api_key=settings.groq_api_key,
@@ -175,7 +172,10 @@ def get_answer(doc_id: str, question: str):
 
     generation_start = time.time()
 
-    chain = PROMPT | get_llm() | StrOutputParser()
+    print("[startup] app.services.rag_chain: before StrOutputParser import", flush=True)
+    from langchain_core.output_parsers import StrOutputParser
+    print("[startup] app.services.rag_chain: after StrOutputParser import", flush=True)
+    chain = get_prompt() | get_llm() | StrOutputParser()
 
     answer = chain.invoke(
         {

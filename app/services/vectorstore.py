@@ -1,8 +1,4 @@
 # TEMP DEBUG - REMOVE AFTER RENDER INVESTIGATION
-print("[startup] app.services.vectorstore: before Chroma import", flush=True)
-from langchain_chroma import Chroma
-print("[startup] app.services.vectorstore: after Chroma import", flush=True)
-
 print("[startup] app.services.vectorstore: before settings import", flush=True)
 from app.core.config import settings
 print("[startup] app.services.vectorstore: after settings import", flush=True)
@@ -20,6 +16,9 @@ def get_vectorstore():
     global _vectordb
 
     if _vectordb is None:
+        print("[startup] app.services.vectorstore: before Chroma import", flush=True)
+        from langchain_chroma import Chroma
+        print("[startup] app.services.vectorstore: after Chroma import", flush=True)
         _vectordb = Chroma(
             collection_name="pdf_documents",
             embedding_function=get_embedding_function(),
