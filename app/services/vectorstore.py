@@ -1,9 +1,19 @@
+# TEMP DEBUG - REMOVE AFTER RENDER INVESTIGATION
+print("[startup] app.services.vectorstore: before Chroma import", flush=True)
 from langchain_chroma import Chroma
+print("[startup] app.services.vectorstore: after Chroma import", flush=True)
 
+print("[startup] app.services.vectorstore: before settings import", flush=True)
 from app.core.config import settings
-from app.services.embedding import get_embedding_function
+print("[startup] app.services.vectorstore: after settings import", flush=True)
 
+print("[startup] app.services.vectorstore: before embedding import", flush=True)
+from app.services.embedding import get_embedding_function
+print("[startup] app.services.vectorstore: after embedding import", flush=True)
+
+print("[startup] app.services.vectorstore: before _vectordb initialization", flush=True)
 _vectordb = None
+print("[startup] app.services.vectorstore: after _vectordb initialization", flush=True)
 
 
 def get_vectorstore():

@@ -1,5 +1,9 @@
+# TEMP DEBUG - REMOVE AFTER RENDER INVESTIGATION
+print("[startup] app.core.config: before pydantic_settings import", flush=True)
 from pydantic_settings import BaseSettings, SettingsConfigDict
+print("[startup] app.core.config: after pydantic_settings import", flush=True)
 
+print("[startup] app.core.config: before Settings class definition", flush=True)
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -26,5 +30,8 @@ class Settings(BaseSettings):
     
     # Retrieval
     retriever_top_k: int = 6
-    
+
+print("[startup] app.core.config: after Settings class definition", flush=True)
+print("[startup] app.core.config: before Settings()", flush=True)
 settings = Settings()
+print("[startup] app.core.config: after Settings()", flush=True)

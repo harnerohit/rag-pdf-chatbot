@@ -1,18 +1,49 @@
+# TEMP DEBUG - REMOVE AFTER RENDER INVESTIGATION
+print("[startup] app.services.rag_chain: before re import", flush=True)
 import re
+print("[startup] app.services.rag_chain: after re import", flush=True)
+
+print("[startup] app.services.rag_chain: before time import", flush=True)
 import time
+print("[startup] app.services.rag_chain: after time import", flush=True)
+
+print("[startup] app.services.rag_chain: before lru_cache import", flush=True)
 from functools import lru_cache
+print("[startup] app.services.rag_chain: after lru_cache import", flush=True)
 
+print("[startup] app.services.rag_chain: before ChatGroq import", flush=True)
 from langchain_groq import ChatGroq
+print("[startup] app.services.rag_chain: after ChatGroq import", flush=True)
+
+print("[startup] app.services.rag_chain: before StrOutputParser import", flush=True)
 from langchain_core.output_parsers import StrOutputParser
+print("[startup] app.services.rag_chain: after StrOutputParser import", flush=True)
+
+print("[startup] app.services.rag_chain: before ChatPromptTemplate import", flush=True)
 from langchain_core.prompts import ChatPromptTemplate
+print("[startup] app.services.rag_chain: after ChatPromptTemplate import", flush=True)
 
+print("[startup] app.services.rag_chain: before settings import", flush=True)
 from app.core.config import settings
+print("[startup] app.services.rag_chain: after settings import", flush=True)
+
+print("[startup] app.services.rag_chain: before logger import", flush=True)
 from app.core.logger import get_logger
+print("[startup] app.services.rag_chain: after logger import", flush=True)
+
+print("[startup] app.services.rag_chain: before SourceChunk import", flush=True)
 from app.models.response import SourceChunk
+print("[startup] app.services.rag_chain: after SourceChunk import", flush=True)
+
+print("[startup] app.services.rag_chain: before vectorstore import", flush=True)
 from app.services.vectorstore import query_documents
+print("[startup] app.services.rag_chain: after vectorstore import", flush=True)
 
+print("[startup] app.services.rag_chain: before logger creation", flush=True)
 logger = get_logger(__name__)
+print("[startup] app.services.rag_chain: after logger creation", flush=True)
 
+print("[startup] app.services.rag_chain: before prompt creation", flush=True)
 PROMPT = ChatPromptTemplate.from_template(
     """
 You are an intelligent document assistant.
@@ -40,6 +71,7 @@ Question:
 Answer:
 """
 )
+print("[startup] app.services.rag_chain: after prompt creation", flush=True)
 
 
 @lru_cache
@@ -68,7 +100,9 @@ def format_docs(docs_with_scores) -> str:
     return "\n\n".join(formatted_chunks)
 
 
+print("[startup] app.services.rag_chain: before second re import", flush=True)
 import re
+print("[startup] app.services.rag_chain: after second re import", flush=True)
 
 
 def rewrite_query(question: str) -> str:
