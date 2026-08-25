@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     embedding_model: str = "BAAI/bge-small-en-v1.5"
     
     # LLM Configuration
-    llm_model: str = "llama-3.3-70b-versatile"
+    llm_model: str = "openai/gpt-oss-120b"
     temperature: float = 0.0
     max_tokens: int = 1024
     
