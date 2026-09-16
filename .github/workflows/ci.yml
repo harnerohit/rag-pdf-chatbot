@@ -23,3 +23,5 @@ jobs:
 
       - name: Sanity-check app imports
         run: uv run python -c "import app.main"
+        env:
+          GROQ_API_KEY: dummy-key-for-ci
