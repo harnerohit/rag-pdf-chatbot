@@ -125,3 +125,7 @@ frontend/test-results/
 # Personal Notes
 interview_questions.txt
 rag-pdf-chatbot-build-guide_3.md
+
+evals/results/*
+!evals/results/.gitkeep
+

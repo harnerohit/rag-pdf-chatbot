@@ -276,6 +276,15 @@ NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
 
 ---
 
+## Evaluation
+
+RAG answer quality is measured with [RAGAS](https://github.com/explodinggym/ragas)
+(`faithfulness`, `answer_relevancy`). Run:
+
+    python evals/ragas_eval.py
+
+Results are written to `evals/results/latest.json`.
+
 # Why RAG?
 
 Traditional LLMs rely only on pre-trained knowledge.

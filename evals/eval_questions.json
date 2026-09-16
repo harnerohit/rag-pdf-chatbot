@@ -1,0 +1,12 @@
+[
+  {"doc_id": "a86ab0b9-1203-47db-8aae-69d3f957a2de", "question": "What is artificial intelligence?"},
+  {"doc_id": "a86ab0b9-1203-47db-8aae-69d3f957a2de", "question": "How does machine learning differ from explicitly programmed rules?"},
+  {"doc_id": "a86ab0b9-1203-47db-8aae-69d3f957a2de", "question": "What are some applications of deep learning mentioned in the document?"},
+  {"doc_id": "a86ab0b9-1203-47db-8aae-69d3f957a2de", "question": "What does retrieval-augmented generation combine?"},
+  {"doc_id": "a86ab0b9-1203-47db-8aae-69d3f957a2de", "question": "How does retrieved context help a language model in a RAG system?"},
+  {"doc_id": "a86ab0b9-1203-47db-8aae-69d3f957a2de", "question": "What are the main stages in a typical RAG pipeline?"},
+  {"doc_id": "a86ab0b9-1203-47db-8aae-69d3f957a2de", "question": "Name vector databases listed in the document."},
+  {"doc_id": "a86ab0b9-1203-47db-8aae-69d3f957a2de", "question": "What benefits of RAG are described?"},
+  {"doc_id": "a86ab0b9-1203-47db-8aae-69d3f957a2de", "question": "What is an embedding?"},
+  {"doc_id": "a86ab0b9-1203-47db-8aae-69d3f957a2de", "question": "Why is chunking important, and what is cosine similarity?"}
+]
